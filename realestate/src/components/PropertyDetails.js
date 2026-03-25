@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './PropertyDetails.css';
+import { useParams } from 'react-router-dom';
+import '../PropertyDetail.css';
 
-const PropertyDetails = ({ propertyId }) => {
+const PropertyDetails = () => {
+    const { id: propertyId } = useParams();
     const [property, setProperty] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);

@@ -24,7 +24,7 @@ const Footer = () => {
 
                 <div className="footer-section">
                     <h3>Contact Info</h3>
-                    <p>Email: info@realestate.com</p>
+                    <p>Email: macmovesapartments.com</p>
                     <p>Phone: (555) 123-4567</p>
                 </div>
 
