@@ -16,6 +16,7 @@ function App() {
         <Route exact path="/" component={Home} /> 
         <Route path="/property/:id" component={PropertyDetails} />
         <Route path="/contact" component={Contact} />
+        <Route path="/about" render={() => <div>About Us Page</div>} />
       </Switch>
 
       <Footer />

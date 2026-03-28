@@ -10,6 +10,7 @@ const Footer = () => {
                 <div className="footer-section">
                     <h3>About Us</h3>
                     <p>Your trusted partner in finding the perfect home.</p>
+                    <p>We guarantee satisfaction with every property we list.</p>
                 </div>
 
                 <div className="footer-section">
@@ -25,7 +26,7 @@ const Footer = () => {
                 <div className="footer-section">
                     <h3>Contact Info</h3>
                     <p>Email: macmovesapartments.com</p>
-                    <p>Phone: (555) 123-4567</p>
+                    <p>Phone: (+254) 740-940-735</p>
                 </div>
 
                 <div className="footer-section">
