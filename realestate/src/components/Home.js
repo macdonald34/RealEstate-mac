@@ -2,6 +2,8 @@ import React from 'react';
 import './Home.css';
 import realEstateImg from '../assets/images/REAL ESTATE.jpg';
 import LivingRoomImg from '../assets/images/LivingRoom.jpg';
+import SwimmingpoolImg from '../assets/images/Swimmingpool.jpeg';
+import GroundImg from '../assets/images/Ground.jpeg';
 
 export default function Home() {
     return (
@@ -78,7 +80,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="property-card">
-                        <img src={realEstateImg} alt="Property" />
+                        <img src={SwimmingpoolImg} alt="Property" />
                         <h3>Mac Villa</h3>
                         <p className="price">$500,000</p>
                         <p className="description">A beautiful villa with modern amenities and spacious rooms.</p>
@@ -105,7 +107,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="property-card">
-                        <img src={LivingRoomImg} alt="Property" />
+                        <img src={GroundImg} alt="Property" />
                         <h3>Muhavi Apartment</h3>
                         <p className="price">$750,000</p>
                         <p className="description">Luxurious apartment in the heart of the city with stunning views.</p>
