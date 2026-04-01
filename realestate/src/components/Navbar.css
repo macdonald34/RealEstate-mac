@@ -1,87 +1,253 @@
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Main navbar container */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.navbar-logo {
-    font-size: 1.8rem;
-    font-weight: 700;
+/* Navbar container for layout */
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+/* Logo styling */
+.navbar-logo a {
+    font-size: 1.2rem;
+    font-weight: 800;
     color: #1a1a2e;
     text-decoration: none;
     letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
 }
 
-.navbar-menu {
+.navbar-logo a:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation menu */
+.nav-menu {
     display: flex;
-    list-style: none;
-    gap: 2rem;
     align-items: center;
+    gap: 2rem;
+    transition: all 0.3s ease;
 }
 
-.navbar-item a {
+/* Navigation links */
+.nav-link {
     text-decoration: none;
-    color: #333;
+    color: #4a5568;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
 }
 
-.navbar-item a::after {
+.nav-link:hover,
+.nav-link.active,
+.nav-link-btn.active {
+    color: #1a1a2e;
+    background: rgba(26, 26, 46, 0.05);
+    transform: translateY(-1px);
+}
+
+.nav-link.active,
+.nav-link-btn.active {
+    color: #0056b3;
+    background: rgba(52, 152, 219, 0.15);
+    font-weight: 700;
+}
+
+.nav-link::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
+    bottom: 0;
+    left: 50%;
     width: 0;
     height: 2px;
     background: linear-gradient(90deg, #007bff, #0056b3);
-    transition: width 0.3s ease;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
-.navbar-item a:hover::after {
-    width: 100%;
+.nav-link:hover::after {
+    width: 80%;
 }
 
-.navbar-btn {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
+/* Sign In button styling */
+.nav-link-btn {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white !important;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.5rem !important;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    margin-left: 0.5rem;
 }
 
-.navbar-btn:hover {
+.nav-link-btn:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    color: white !important;
 }
 
+/* Hamburger menu for mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #1a1a2e;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Mobile responsive styles */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 1rem;
+    .navbar-container {
+        padding: 0 1rem;
+        height: 60px;
     }
 
-    .navbar-menu {
-        gap: 1rem;
+    .navbar-logo a {
+        font-size: 1.5rem;
     }
 
-    .navbar-item a {
-        font-size: 0.85rem;
+    .hamburger {
+        display: flex;
     }
+
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 3rem;
+        gap: 2rem;
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        width: 80%;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .nav-link-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 80%;
+        padding: 1rem 2rem !important;
+    }
+
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .navbar-container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-menu {
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+/* User menu for authenticated users */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-email {
+    color: #4a5568;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background: rgba(74, 85, 104, 0.1);
+    border-radius: 20px;
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.signout-btn {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+}
+
+.signout-btn:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%) !important;
 }

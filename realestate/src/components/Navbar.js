@@ -12,15 +12,16 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <div className="navbar-logo">
-                    <a href="/">RealEstate</a>
+                    <a href="/">Mac_Moves Apartemnts</a>
                 </div>
 
                 <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
-                    <a href="/" className="nav-link">Home</a>
-                    <a href="/listings" className="nav-link">Listings</a>
-                    <a href="/about" className="nav-link">About</a>
-                    <a href="/contact" className="nav-link">Contact</a>
-                    <a href="/login" className="nav-link nav-link-btn">Sign In</a>
+                    <a href="/" className="nav-link ">Home</a>
+                    <a href="/listings" className="nav-link ">Listings</a>
+                    <a href="/about" className="nav-link ">About</a>
+                    <a href="/contact" className="nav-link nav-link-btn">Contact</a>
+                    <a href="/signin" className="nav-link nav-link-btn">SignIn</a>
+                    <a href="/signup" className="nav-link nav-link-btn">SignUp</a>
                 </div>
 
                 <div className="hamburger" onClick={toggleMenu}>

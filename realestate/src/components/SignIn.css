@@ -1,90 +1,351 @@
+/* Main container with gradient background */
 .signin-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.signin-form {
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+/* Main signin card */
+.signin-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
+    padding: 40px;
+    animation: slideUp 0.5s ease-out;
 }
 
-.signin-form h1 {
-    margin: 0 0 30px;
-    font-size: 28px;
-    color: #333;
+/* Header section */
+.signin-header {
     text-align: center;
+    margin-bottom: 30px;
 }
 
+.signin-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.signin-header p {
+    color: #7f8c8d;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Form styling */
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form groups */
 .form-group {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
     font-weight: 600;
-    color: #333;
+    color: #34495e;
+    margin-bottom: 8px;
     font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.form-group input {
+/* Input wrapper for icons */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.3s;
+    padding: 16px 50px 16px 16px;
+    border: 2px solid #e1e8ed;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #ffffff;
     box-sizing: border-box;
 }
 
-.form-group input:focus {
+.input-wrapper input:focus {
     outline: none;
     border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.signin-button {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.signin-button:hover {
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
     transform: translateY(-2px);
 }
 
-.signin-button:active {
-    transform: translateY(0);
+.input-wrapper input.error {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1);
 }
 
-.signin-footer {
-    margin-top: 20px;
+/* Input icons */
+.input-icon {
+    position: absolute;
+    right: 16px;
+    font-size: 18px;
+    color: #95a5a6;
+    pointer-events: none;
+}
+
+/* Password toggle button */
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #95a5a6;
+    transition: color 0.3s ease;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.password-toggle:hover {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+/* Field errors */
+.field-error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* General error message */
+.general-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+    padding: 12px;
+    border-radius: 8px;
     text-align: center;
-    font-size: 14px;
-    color: #666;
+    margin-bottom: 20px;
 }
 
-.signin-footer a {
+/* Form options (remember me and forgot password) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #34495e;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #667eea;
+}
+
+.forgot-password {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* Sign in button */
+.signin-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.signin-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.signin-button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer section */
+.signin-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ecf0f1;
+}
+
+.signin-footer p {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin: 0;
+}
+
+.signup-link {
     color: #667eea;
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
-.signin-footer a:hover {
+.signup-link:hover {
+    color: #764ba2;
     text-decoration: underline;
+}
+
+/* Divider */
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #ecf0f1;
+}
+
+.divider span {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0 20px;
+    color: #95a5a6;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Social signin buttons */
+.social-signin {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border: 2px solid #e1e8ed;
+    border-radius: 12px;
+    background: white;
+    color: #34495e;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-button:hover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.social-icon {
+    font-size: 18px;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .signin-container {
+        padding: 10px;
+    }
+
+    .signin-card {
+        padding: 30px 20px;
+    }
+
+    .signin-header h1 {
+        font-size: 28px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .social-button {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
 }
