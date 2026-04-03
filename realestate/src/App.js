@@ -19,6 +19,7 @@ function App() {
         <Route path="/property/:id" component={PropertyDetails} />
         <Route path="/contact" component={Contact} />
         <Route path="/signin" component={SignIn} />
+        <Route path="/signup" component={SignUp} />
         <Route path="/about" render={() => <div>About Us Page</div>} />
       </Switch>
 
